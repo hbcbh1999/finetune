@@ -35,7 +35,6 @@ def AdamWeightDecay(params, grads, lr, schedule, t_total, b1=0.9, b2=0.999, e=1e
     if max_grad_norm > 0:
         grads, _ = tf.clip_by_global_norm(grads, max_grad_norm)
     for p, g, ptw, msk in zip_longest(params, grads, pretrained_weights["init_params"], pretrained_weights["mask"]):
-        print(p.name)
         if p is None or g is None:
             print("can't train", p.name, g)
         else:
